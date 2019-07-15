@@ -19,8 +19,8 @@ namespace Famex.Athena.Microservice.Logging
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseKestrel()
-                .UseIISIntegration()
+                //.UseKestrel() // Only use this option for out of process mode
+                //.UseIISIntegration() //Only use this option for out of process mode
                 .UseStartup<Startup>();
     }
 }
