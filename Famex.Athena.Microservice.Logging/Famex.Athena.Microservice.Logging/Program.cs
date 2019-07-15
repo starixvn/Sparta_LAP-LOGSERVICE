@@ -19,6 +19,8 @@ namespace Famex.Athena.Microservice.Logging
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                .UseKestrel()
+                .UseIISIntegration()
                 .UseStartup<Startup>();
     }
 }

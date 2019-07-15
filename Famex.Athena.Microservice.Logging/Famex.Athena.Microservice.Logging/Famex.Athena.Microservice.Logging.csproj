@@ -7,6 +7,11 @@
     <UserSecretsId>cf979df8-e4f8-49a2-9bcf-f9f88ae4d831</UserSecretsId>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Fanex.Logging" Version="2.0.1" />
     <PackageReference Include="Fanex.Logging.Extensions.AspNetCore" Version="1.0.0" />
