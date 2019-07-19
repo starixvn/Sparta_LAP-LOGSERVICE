@@ -21,7 +21,8 @@ namespace Famex.Athena.Microservice.Logging.Controllers
         }
         // POST api/values
         [HttpPost]
-        public void Post([FromBody] LogMeType value)
+        [Consumes("application/x-www-form-urlencoded")]
+        public void Post([FromForm] LogMeType value)
         {
             if (value != null && value.IsValid)
             {
