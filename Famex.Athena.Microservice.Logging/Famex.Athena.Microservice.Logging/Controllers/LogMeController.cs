@@ -1,6 +1,8 @@
 ﻿using Famex.Athena.Microservice.Logging.Model;
-using Fanex.Logging;
+
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +15,11 @@ namespace Famex.Athena.Microservice.Logging.Controllers
     public class LogMeController : Controller
     {
         private readonly List<string> ErrorLogLevel = new List<string> { "Error", "Warn" };
-
+        private readonly Microsoft.Extensions.Logging.ILogger _logger;
+        public LogMeController(ILogger<LogMeController> logger)
+        {
+            _logger = logger;
+        }
         [HttpGet]
         public List<string> Get()
         {
@@ -28,11 +34,11 @@ namespace Famex.Athena.Microservice.Logging.Controllers
             {
                 if (ErrorLogLevel.Contains(value.Level, StringComparer.InvariantCultureIgnoreCase))
                 {
-                    Logger.Log.Error(value.Message);
+                    _logger.LogError(value.Message);
                 }
                 else
                 {
-                    Logger.Log.Info(value.Message);
+                    _logger.LogWarning(value.Message);
                 }
             }
         }
